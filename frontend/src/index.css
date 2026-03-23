@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #7dd3fc;
+  /* Fallback Sky Blue */
+}
+
+/* 1. Fluffy Cloud Animation */
+@keyframes drift {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100vw);
+  }
+}
+
+/* We will use a more subtle "floating" animation for the icons */
+@keyframes bob {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bob {
+  animation: bob 4s ease-in-out infinite;
+}
+
+.animate-drift {
+  animation: drift linear infinite;
+}
+
+/* 2. Light Summer Rain */
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+.rain-drop {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.6);
+  width: 1.5px;
+  height: 40px;
+  animation: fall linear infinite;
+}
+
+/* 3. High-Altitude Sun Glow */
+@keyframes sun-pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: scale(1.3);
+    opacity: 0.2;
+  }
+}
+
+.sun-glow {
+  animation: sun-pulse 8s ease-in-out infinite;
+}
+
+/* 4. Glass Grain Texture (Lighter for Blue) */
+.glass-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  filter: contrast(120%) brightness(120%);
+  opacity: 0.03;
+  pointer-events: none;
+  border-radius: inherit;
+}
